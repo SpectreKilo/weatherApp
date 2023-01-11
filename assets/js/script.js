@@ -6,6 +6,7 @@ var cityName = "";
 var latitude = "";
 var longitude = "";
 var recentCities = [];
+var currentDate = dayjs().format("MMMM DD, YYYY");
 var apiKey = "5f63fb5563dc4bb7b980fcfe90a1fb82"
 
 function getRecentCities () {
@@ -46,19 +47,56 @@ function getCityWeather() {
         console.log("data function works");
         console.log("current weather data : ", data);
         var iconData = data.weather[0].icon;
-        $("#iconImg")
+        $("#iconImg").addClass("card.small left")
+        $("#iconImg").attr("src", "https://openweathermap.org/img/wn/" + iconData +"@4x.png" )
+
+        var temp = data.main.temp
+        $("#temp").text("Temperature : " + temp + " degrees")
+        var windSpeed = data.wind.speed
+        $("#wind").text("Wind Speed: " + windSpeed )
+        console.log(data.name);
+        latitude = data.coord.lat;
+        longitude = data.coord.lon;
+        console.log("lat : " + latitude, "lon: " + longitude);
+        //does this dayjs work?
+        $("#date").text(currentDate);
+
+        localStorage.setItem("cityName", data.name)
+        
     }
-    )
-}
+    );
+};
 
 function fillCities () {
     console.log("filledCities");
     $("#cityTitle").text(cityName);
+    if (recentCities.indexOf(cityName) === -1) {
+        var listItem = $("<li>")
+        var pastCityButtons = $("<button>");
+        pastCityButtons.addClass("title btn-large")
+        pastCityButtons.text(cityName);
+        pastCityButtons.click(function() {
+            console.log(this, " : clicked")
+            console.log($(this).text())
+            cityName = $(this).text()
+            fillCities();
+            getCityWeather();
+        })
+        listItem.append(pastCityButtons);
+        $("#buttonList").append(listItem);
+        recentCities.push(cityName);
+        localStorage.setItem("recent-Search", JSON.stringify(recentCities))
+    }
 
 }
 $("city-input").submit(function (event) {
     $("#currentWeatherCard").removeClass("hide");
     $(".forecastWeatherCard").removeClass("hide");
     event.preventDefault();
+    cityName =
+    fillCities();
+    getCityWeather();
 
 })
+
+getRecentCities();
