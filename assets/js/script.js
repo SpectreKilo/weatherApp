@@ -116,7 +116,7 @@ $("#city-input").submit(function (event) {
     cityName = $("#cityName").val();
     console.log(cityName);
     fillCities();
-    foreCast();
+    // foreCast();
     getCityWeather();
 
 })
