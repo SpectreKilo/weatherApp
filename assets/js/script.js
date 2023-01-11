@@ -28,6 +28,8 @@ function getRecentCities () {
             })
             listItem.append(pastCityButtons);
             $("#buttonList").append(listItem);
+            recentCities.push(cityName);
+            localStorage.setItem()
         }
     }
 }
@@ -49,6 +51,7 @@ function getCityWeather() {
 
 function fillCities () {
     console.log("filledCities");
+    $("#cityTitle").text(cityName);
 
 }
 $("city-input").submit(function (event) {
