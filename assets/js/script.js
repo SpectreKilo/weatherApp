@@ -95,7 +95,8 @@ $("#city-input").submit(function (event) {
     $("#currentWeatherCard").removeClass("hide");
     $(".forecastWeatherCard").removeClass("hide");
     event.preventDefault();
-    cityName = $("#autocomplete-input").val().trim();
+    cityName = $("#cityName").val();
+    console.log(cityName);
     fillCities();
     getCityWeather();
 
