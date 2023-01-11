@@ -68,6 +68,12 @@ function getCityWeather() {
     );
 };
 
+function foreCast(){
+    console.log("forecast function")
+    var forecastUrl = "https://api.openweathermap.org/data/2.5/forecast?q="+ cityName + "&units=imperial&appid=" + apiKey
+    console.log(forecastUrl);
+}
+
 function fillCities () {
     console.log("filledCities");
     $("#cityTitle").text(cityName);
@@ -97,6 +103,7 @@ $("#city-input").submit(function (event) {
     cityName = $("#cityName").val();
     console.log(cityName);
     fillCities();
+    foreCast();
     getCityWeather();
 
 })
