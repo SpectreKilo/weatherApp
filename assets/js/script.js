@@ -2,9 +2,35 @@
 //input to variable, variable used for fetch api, to generate buttons for past searches 
 // search button uses event listener to generate past city buttons and creates cards for current and future weather
 // 
+var cityName = "";
+var latitude = "";
+var longitude = "";
+var recentCities = [];
 var apiKey = "5f63fb5563dc4bb7b980fcfe90a1fb82"
 
+function getRecentCities () {
+    var savedSearches = JSON.parse(localStorage.getItem("recent-cities"))
+    console.log(savedSearches);
 
+    for (i=0; i<savedSearches.length; i++) {
+        console.log(savedSearches[i])
+        if (recentCities.indexOf(cityName) === -1) {
+            var listItem =$("<li>")
+            var pastCityButtons = $("<button>");
+            pastCityButtons.addClass("title btn-large");
+            pastCityButtons.text(savedSearches[i]);
+            pastCityButtons.click(function() {
+                console.log(this, "was clicked");
+                console.log($(this).text());
+                cityName = $(this).text();
+                fillCities();
+                getCityWeather();
+            })
+            listItem.append(pastCityButtons);
+            
+        }
+    }
+}
 function getCityWeather() {
     var queryUrl = "api.openweathermap.org/data/2.5/forecast?q="+ cityName + "&appid=" + apiKey
     // https://api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
@@ -21,6 +47,13 @@ function getCityWeather() {
     )
 }
 
+function fillCities () {
+    console.log("filledCities");
+
+}
 $("city-input").submit(function (event) {
     $("#currentWeatherCard").removeClass("hide");
+    $("#forecastWeatherCard").removeClass("hide");
+    event.preventDefault();
+
 })
