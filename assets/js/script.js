@@ -6,13 +6,17 @@ var apiKey = "5f63fb5563dc4bb7b980fcfe90a1fb82"
 
 
 function getCityWeather() {
-    var url = "api.openweathermap.org/data/2.5/forecast?q="+ cityName + "&appid=" + apiKey
+    var queryUrl = "api.openweathermap.org/data/2.5/forecast?q="+ cityName + "&appid=" + apiKey
 
     //fetch weather
-    fetch(url)
+    fetch(queryUrl)
     .then(function (response) {
         console.log(response);
             return response.json();
     })
-    
+    .then(function (data) {
+        console.log("data function works");
+        console.log("current weather data : ", data);
+    }
+    )
 }
