@@ -16,15 +16,32 @@
     <h1>Weather Dashboard</h1>
 </header>
 <body>
+    <!-- City Search Text Box and Button -->
     <div class="row">
-        <form class="row g-3">
+        <form id="city-input" class="row g-3">
             <div class="col-auto">
               <input type="text" class="form-control" id="cityName" placeholder="City Name">
             </div>
             <div class="col-auto">
-              <button type="submit" class="btn btn-primary mb-3">Search</button>
+              <button type="submit" id="searchBtn" class="btn btn-primary mb-3">Search</button>
             </div>
           </form>
+    </div>
+
+    <div id="currentWeatherCard" class="hide">
+        <div class="card">
+            
+
+
+        </div>
+    </div>
+
+    <div id="forecastWeatherCard" class="hide">
+        <div class="card">
+            
+
+
+        </div>
     </div>
     
     

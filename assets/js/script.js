@@ -7,7 +7,7 @@ var apiKey = "5f63fb5563dc4bb7b980fcfe90a1fb82"
 
 function getCityWeather() {
     var queryUrl = "api.openweathermap.org/data/2.5/forecast?q="+ cityName + "&appid=" + apiKey
-
+    // https://api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
     //fetch weather
     fetch(queryUrl)
     .then(function (response) {
@@ -20,3 +20,7 @@ function getCityWeather() {
     }
     )
 }
+
+$("city-input").submit(function (event) {
+    $("#currentWeatherCard").removeClass("hide");
+})
