@@ -33,13 +33,12 @@ function getRecentCities () {
             recentCities.push(savedSearches[i]);
         }
     }
-    $("#currentWeatherCard").removeClass("hide");
-    $(".forecastWeatherCard").removeClass("hide");
+    
     }
 }
 function getCityWeather() {
     var url = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&units=imperial&appid=" + apiKey
-    fetch(Url)
+    fetch(url)
     .then(function (response) {
         console.log("getCityWeather works")
         console.log(response);
