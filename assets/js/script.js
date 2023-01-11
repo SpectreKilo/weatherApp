@@ -33,9 +33,9 @@ function getRecentCities () {
             recentCities.push(savedSearches[i]);
         }
     }
-    }
     $("#currentWeatherCard").removeClass("hide");
     $(".forecastWeatherCard").removeClass("hide");
+    }
 }
 function getCityWeather() {
     var url = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&units=imperial&appid=" + apiKey
@@ -91,7 +91,7 @@ function fillCities () {
     }
 
 }
-$("city-input").submit(function (event) {
+$("#city-input").submit(function (event) {
     $("#currentWeatherCard").removeClass("hide");
     $(".forecastWeatherCard").removeClass("hide");
     event.preventDefault();
