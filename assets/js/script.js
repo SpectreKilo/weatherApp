@@ -28,23 +28,25 @@ function getRecentCities () {
             })
             listItem.append(pastCityButtons);
             $("#buttonList").append(listItem);
-            recentCities.push(cityName);
-            localStorage.setItem()
+            recentCities.push(savedSearches[i]);
         }
     }
+    $("#currentWeatherCard").removeClass("hide");
+    $(".forecastWeatherCard").removeClass("hide");
 }
 function getCityWeather() {
-    var queryUrl = "api.openweathermap.org/data/2.5/forecast?q="+ cityName + "&appid=" + apiKey
-    // https://api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
-    //fetch weather
-    fetch(queryUrl)
+    var url = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&units=imperial&appid=" + apiKey
+    fetch(Url)
     .then(function (response) {
+        console.log("getCityWeather works")
         console.log(response);
             return response.json();
     })
     .then(function (data) {
         console.log("data function works");
         console.log("current weather data : ", data);
+        var iconData = data.weather[0].icon;
+        $("#iconImg")
     }
     )
 }
@@ -56,7 +58,7 @@ function fillCities () {
 }
 $("city-input").submit(function (event) {
     $("#currentWeatherCard").removeClass("hide");
-    $("#forecastWeatherCard").removeClass("hide");
+    $(".forecastWeatherCard").removeClass("hide");
     event.preventDefault();
 
 })

@@ -39,7 +39,7 @@
     <div class="row col.m2 forecastRow">
 
     </div>
-<!-- Current Weather Card -->
+ <!-- Weather Card -->
     <div id="currentWeatherCard" class="hide row right-align">
         <div class="col s12 m6">
             <div class="card currentdayForecastCard">
@@ -51,26 +51,51 @@
                     <p id="temp"></p>
                     <p id="humidity"></p>
                     <p id="wind"></p>
-                    
-
-
-
+                
                 </div>
             </div>
         </div>
     </div>
 <!-- Forecast Card -->
-    <div id="forecastWeatherCard" class="hide">
-        <div class="card">
-            
-
-
-        </div>
+<div class="row col.m2 forecastRow">
+    <div class="forecastWeatherCard col s2 card grey card-content white-text hide">
+        <span id="cityTitle" class="card-title"></span>
+        <p id="date1"></p>
+        <img id="iconImg1">
+        <p id="temp1"></p>
+        <p id="humidity1"></p>
+        <p id="wind1"></p>
     </div>
+    <div class="forecastWeatherCard col s2 card grey card-content white-text hide">
+        <span id="cityTitle" class="card-title"></span>
+        <p id="date2"></p>
+        <img id="iconImg2">
+        <p id="temp2"></p>
+        <p id="humidity2"></p>
+        <p id="wind2"></p>
+    </div>
+    <div class="forecastWeatherCard col s2 card grey card-content white-text hide">
+        <span id="cityTitle" class="card-title"></span>
+        <p id="date3"></p>
+        <img id="iconImg3">
+        <p id="temp3"></p>
+        <p id="humidity3"></p>
+        <p id="wind3"></p>
+    </div>
+    <div class="forecastWeatherCard col s2 card grey card-content white-text hide">
+        <span id="cityTitle" class="card-title"></span>
+        <p id="date4"></p>
+        <img id="iconImg4">
+        <p id="temp4"></p>
+        <p id="humidity4"></p>
+        <p id="wind4"></p>
+    </div>
+</div>
+    
     <!-- List for previous cities -->
     <ul id="pastCitiesList" class="table.responsive-table thead tr">Previous Cities
-        <li>
-            <ul id="buttonList"></ul>
+        <li class="collection-item avatar">
+            <ul id="buttonList"><span class="title cityList"></span></ul>
         </li>
     </ul>
     
