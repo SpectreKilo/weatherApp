@@ -13,6 +13,7 @@ function getRecentCities () {
     var savedSearches = JSON.parse(localStorage.getItem("recent-cities"))
     console.log(savedSearches);
 
+    if(savedSearches) {
     for (i=0; i<savedSearches.length; i++) {
         console.log(savedSearches[i])
         if (recentCities.indexOf(cityName) === -1) {
@@ -31,6 +32,7 @@ function getRecentCities () {
             $("#buttonList").append(listItem);
             recentCities.push(savedSearches[i]);
         }
+    }
     }
     $("#currentWeatherCard").removeClass("hide");
     $(".forecastWeatherCard").removeClass("hide");
