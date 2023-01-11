@@ -59,6 +59,7 @@ function getCityWeather() {
         latitude = data.coord.lat;
         longitude = data.coord.lon;
         console.log("lat : " + latitude, "lon: " + longitude);
+        foreCast(latitude, longitude);
         //does this dayjs work?
         $("#date").text(currentDate);
 
@@ -68,10 +69,22 @@ function getCityWeather() {
     );
 };
 
-function foreCast(){
+function foreCast(lat, lon){
     console.log("forecast function")
-    var forecastUrl = "https://api.openweathermap.org/data/2.5/forecast?q="+ cityName + "&units=imperial&appid=" + apiKey
+    
+    var forecastUrl = "https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&appid=" + apiKey
     console.log(forecastUrl);
+//console log outputs correct url but then the fetch gives error code 400
+    fetch(forecastUrl)
+    .then(function (response){
+        console.log("this is the forecast function too");
+        console.log(response);
+            return response.json();
+    })
+    .then(function (data) {
+        console.log("forecast data function");
+        console.log("current forecast weather data: ", data);
+    })
 }
 
 function fillCities () {
