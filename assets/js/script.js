@@ -77,13 +77,28 @@ function foreCast(lat, lon){
 //console log outputs correct url but then the fetch gives error code 400
     fetch(forecastUrl)
     .then(function (response){
-        console.log("this is the forecast function too");
+        console.log("this is the forecast response function too");
         console.log(response);
             return response.json();
     })
     .then(function (data) {
         console.log("forecast data function");
         console.log("current forecast weather data: ", data);
+        
+        for (i = 1; i < 5; i++) {
+            console.log("this is the forecast ", data.daily[i])
+            var forecastDates = dayjs(data.daily[i].dt).format("MMMM DD, YYYY")
+            $("date" + i).text(forecastDates);
+            var iconImgFC = data.daily[i].weather[0].icon
+            $("#iconImg" + i).attr("src", "https://openweathermap.org/img/wn/" + iconImgFC + "@2x.png")
+            var tempFC = data.daily[i].temp.day;
+            $("temp" + i).text(tempFC + "degrees");
+            var humidityFC = data.daily[i].humidity
+            $("#humidity" + i).text(humidityFC + "% humidity")
+            var windSpeedFC = data.daily[i].wind_speed;
+            $("#wind" + i).text(windSpeedFC + " Wind Speed")
+
+        }
     })
 }
 
