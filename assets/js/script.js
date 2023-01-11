@@ -27,7 +27,7 @@ function getRecentCities () {
                 getCityWeather();
             })
             listItem.append(pastCityButtons);
-            
+            $("#buttonList").append(listItem);
         }
     }
 }
