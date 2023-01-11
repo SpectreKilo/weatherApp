@@ -85,7 +85,7 @@ function fillCities () {
         listItem.append(pastCityButtons);
         $("#buttonList").append(listItem);
         recentCities.push(cityName);
-        localStorage.setItem("recent-Search", JSON.stringify(recentCities))
+        localStorage.setItem("recent-cities", JSON.stringify(recentCities))
     }
 
 }
@@ -93,7 +93,7 @@ $("city-input").submit(function (event) {
     $("#currentWeatherCard").removeClass("hide");
     $(".forecastWeatherCard").removeClass("hide");
     event.preventDefault();
-    cityName =
+    cityName = $("#autocomplete-input").val().trim();
     fillCities();
     getCityWeather();
 
