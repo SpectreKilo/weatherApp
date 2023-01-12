@@ -28,14 +28,17 @@ An app used to search for the current and future weather for any city!
 ## Usage
 ### *Step 1*
 Search the city you want to see the weather for.
+
 ![search](/assets/img/search.png)  
 
 ### *Step 2*
 View the weather for today and the next 4 days.
+
 ![IMG alt text](/assets/img/weather.png) 
 
 ### *Step 3*
 Use the previous buttons to see weather data that you previously searched that is stored locally.
+
 ![IMG alt text](/assets/img/prev.png) 
 
 
