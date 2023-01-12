@@ -27,7 +27,7 @@ An app used to search for the current and future weather for any city!
 
 ## Usage
 ### *Step 1*
-Search the city you want the weather for.
+Search the city you want to see the weather for.
 ![search](/assets/img/search.png)  
 
 ### *Step 2*
