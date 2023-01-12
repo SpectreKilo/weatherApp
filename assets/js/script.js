@@ -52,9 +52,12 @@ function getCityWeather() {
         $("#iconImg").attr("src", "https://openweathermap.org/img/wn/" + iconData +"@4x.png" )
 
         var temp = data.main.temp
-        $("#temp").text("Temperature : " + temp + " degrees")
+        $("#temp").text("Temperature: " + temp + " degrees");
+        var humidity = data.main.humidity
+        $("#humidity").text("Humidity: " + humidity + "%");
         var windSpeed = data.wind.speed
-        $("#wind").text("Wind Speed: " + windSpeed )
+        $("#wind").text("Wind Speed: " + windSpeed );
+
         console.log(data.name);
         latitude = data.coord.lat;
         longitude = data.coord.lon;
@@ -72,7 +75,8 @@ function getCityWeather() {
 function foreCast(lat, lon){
     console.log("forecast function")
     
-    var forecastUrl = "https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&appid=" + apiKey
+    var forecastUrl = "https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&appid=" + apiKey + "&units=imperial"
+    // var forecastUrl = "https://pro.openweathermap.org/data/2.5/forecast/climate?lat=" + lat + "&lon=" + lon + "&appid=" + apiKey + "&units=imperial"
     console.log(forecastUrl);
 //console log outputs correct url but then the fetch gives error code 400
     fetch(forecastUrl)
@@ -89,14 +93,17 @@ function foreCast(lat, lon){
             console.log("here is data: ", data)
             console.log("this is the forecast ", data.list[i])
             var forecastDates = dayjs(data.list[i].dt).format("MMMM DD, YYYY")
-            $("date" + i).text(forecastDates);
+            $("#date" + i).text(forecastDates);
             var iconImgFC = data.list[i].weather[0].icon
             $("#iconImg" + i).attr("src", "https://openweathermap.org/img/wn/" + iconImgFC + "@2x.png")
-            var tempFC = data.list[i].temp.day;
-            $("temp" + i).text(tempFC + "degrees");
-            var humidityFC = data.list[i].humidity
-            $("#humidity" + i).text(humidityFC + "% humidity")
-            var windSpeedFC = data.list[i].wind_speed;
+            var tempFC = data.list[i].main.temp;
+            console.log(tempFC);
+            $("#temp" + i).text(tempFC + " degrees");
+            var humidityFC = data.list[i].main.humidity;
+            console.log(humidityFC);
+            $("#humidity" + i).text(humidityFC + "% humidity");
+            var windSpeedFC = data.list[i].wind.speed;
+            console.log(windSpeedFC);
             $("#wind" + i).text(windSpeedFC + " Wind Speed")
 
         }
