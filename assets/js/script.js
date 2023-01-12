@@ -86,16 +86,17 @@ function foreCast(lat, lon){
         console.log("current forecast weather data: ", data);
         
         for (i = 1; i < 5; i++) {
-            console.log("this is the forecast ", data.daily[i])
-            var forecastDates = dayjs(data.daily[i].dt).format("MMMM DD, YYYY")
+            console.log("here is data: ", data)
+            console.log("this is the forecast ", data.list[i])
+            var forecastDates = dayjs(data.list[i].dt).format("MMMM DD, YYYY")
             $("date" + i).text(forecastDates);
-            var iconImgFC = data.daily[i].weather[0].icon
+            var iconImgFC = data.list[i].weather[0].icon
             $("#iconImg" + i).attr("src", "https://openweathermap.org/img/wn/" + iconImgFC + "@2x.png")
-            var tempFC = data.daily[i].temp.day;
+            var tempFC = data.list[i].temp.day;
             $("temp" + i).text(tempFC + "degrees");
-            var humidityFC = data.daily[i].humidity
+            var humidityFC = data.list[i].humidity
             $("#humidity" + i).text(humidityFC + "% humidity")
-            var windSpeedFC = data.daily[i].wind_speed;
+            var windSpeedFC = data.list[i].wind_speed;
             $("#wind" + i).text(windSpeedFC + " Wind Speed")
 
         }
